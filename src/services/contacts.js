@@ -35,10 +35,3 @@ export const updateContact = async (contactId, payload, option = {}) => {
     isNew: Boolean(result?.lastErrorObject?.upserted),
   };
 };
-
-// export const patchContact = async (contactId, payload) => {
-//   const contact = await contactsCollection.findByIdAndUpdate(contactId, payload, {
-//     new: true,
-//   });
-//   return contact;
-// };

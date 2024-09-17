@@ -22,6 +22,7 @@ export const createContactSchema = Joi.object({
   email: Joi.string().email(),
   isFavourite: Joi.boolean(),
   contactType: Joi.string().valid('work', 'home', 'personal').required(),
+  userId: Joi.string().required(),
 });
 
 export const updateContactSchema = Joi.object({
@@ -30,12 +31,16 @@ export const updateContactSchema = Joi.object({
     'string.min': 'Username should have at least {#limit} characters',
     'string.max': 'Username should have at most {#limit} characters',
   }),
-  phoneNumber: Joi.string().min(3).max(20).messages({
-    'string.base':
-      'PhoneNumber can consist of only numbers, signs +, (, ) or -', // Кастомізація повідомлення для типу "string"
-    'string.min': 'PhoneNumber name should have at least {#limit} characters',
-    'string.max': 'PhoneNumber should have at most {#limit} characters',
-  }),
+  phoneNumber: Joi.string()
+    .pattern(/^[0-9\+\-\(\)\s]+$/)
+    .min(3)
+    .max(20)
+    .messages({
+      'string.base':
+        'PhoneNumber can consist of only numbers, signs +, (, ) or -', // Кастомізація повідомлення для типу "string"
+      'string.min': 'PhoneNumber name should have at least {#limit} characters',
+      'string.max': 'PhoneNumber should have at most {#limit} characters',
+    }),
   email: Joi.string().email(),
   isFavourite: Joi.boolean(),
   contactType: Joi.string().valid('work', 'home', 'personal'),

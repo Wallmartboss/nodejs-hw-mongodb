@@ -37,6 +37,7 @@ export const getContactByIdController = async (req, res, next) => {
   try {
     const { _id: userId } = req.user;
     const { contactId } = req.params;
+
     const contact = await getContactById({ _id: contactId, userId });
     // Відповідь, якщо контакт не знайдено
     if (!contact) {
@@ -54,6 +55,7 @@ export const getContactByIdController = async (req, res, next) => {
 };
 export const createContactController = async (req, res) => {
   const { _id: userId } = req.user;
+
   const contact = await createContact({ ...req.body, userId });
   res.status(201).json({
     status: 201,
@@ -64,6 +66,7 @@ export const createContactController = async (req, res) => {
 export const deleteContactController = async (req, res, next) => {
   const userId = req.user._id;
   const { contactId } = req.params;
+  if (req.body.userId) delete req.body.userId;
 
   const contact = await deleteContact(contactId, userId);
 

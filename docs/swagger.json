@@ -318,11 +318,12 @@
           }
         ],
         "requestBody": {
-          "required": true,
           "content": {
             "multipart/form-data": {
               "schema": {
                 "type": "object",
+                "description": "At least one of these fields must be provided.",
+                "minProperties": 1,
                 "properties": {
                   "name": {
                     "description": "contact's name",
@@ -340,7 +341,7 @@
                     "example": "test@test.com"
                   },
                   "isFavourite": {
-                    "description": "contact's isFavourite",
+                    "description": "Is the contact marked as a favorite?",
                     "type": "boolean",
                     "example": true
                   },

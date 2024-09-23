@@ -1,8 +1,8 @@
 tags:
   - Contacts
-summary: Get contact by id
-operationId: getContactById
-description: Retrieve a specific contact's details by its unique ID
+summary: Delete contact by id
+operationId: deleteContactById
+description: Delete a specific contact by its unique ID
 security:
   - bearerAuth: []
 parameters:
@@ -14,7 +14,9 @@ parameters:
       example: '66d8e23bd18ecacf8d38c37c'
       description: The unique identifier of the contact
 responses:
-  '200':
-    $ref: '../../../components/responses/200.yaml'
+  '204':
+    description: Contact deleted successfully. No content returned.
+  '401':
+    $ref: '../../../components/responses/401.yaml'
   '404':
     $ref: '../../../components/responses/404.yaml'

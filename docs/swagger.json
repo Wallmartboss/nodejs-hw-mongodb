@@ -207,11 +207,6 @@
                       "personal"
                     ]
                   },
-                  "userId": {
-                    "description": "user's id who has created contact",
-                    "type": "string",
-                    "example": "66eef6305cb56b7425569aea"
-                  },
                   "photo": {
                     "description": "Link to contact's photo",
                     "type": "string",
